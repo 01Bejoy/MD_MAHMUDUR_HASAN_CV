@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MD Mahmudur Hasan — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0E1A2B;
+    --surface: #142338;
+    --surface-2: #1B2E48;
+    --line: #2A3F5C;
+    --text: #E7EDF4;
+    --text-dim: #8FA3BE;
+    --cyan: #4FD1C5;
+    --amber: #F0A868;
+    --amber-dim: #C88A5A;
+    --radius: 10px;
+    --maxw: 880px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:
+      radial-gradient(1100px 600px at 15% -10%, rgba(79,209,197,0.08), transparent 60%),
+      radial-gradient(900px 500px at 100% 10%, rgba(240,168,104,0.06), transparent 55%),
+      var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--cyan); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--cyan); outline-offset:3px;}
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,26,43,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .nav-id{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:15px;
+    color:var(--text); white-space:nowrap;
+  }
+  .nav-id span{color:var(--cyan);}
+  .nav-links{display:flex; gap:22px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:12.5px;}
+  .nav-links a{color:var(--text-dim); letter-spacing:.03em;}
+  .nav-links a:hover{color:var(--cyan); text-decoration:none;}
+
+  /* ---------- HERO ---------- */
+  header.hero{padding:72px 0 40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--amber);
+    letter-spacing:.12em; text-transform:uppercase; margin:0 0 18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:22px; height:1px; background:var(--amber); display:inline-block;}
+  h1.name{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(38px, 6vw, 64px); line-height:1.05; margin:0 0 14px;
+    letter-spacing:-0.01em;
+  }
+  .tagline{
+    font-size:clamp(15px,2vw,18px); color:var(--text-dim); max-width:560px; margin:0 0 30px;
+  }
+  .hero-contact{display:flex; flex-wrap:wrap; gap:10px 22px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--text-dim); margin-bottom:44px;}
+  .hero-contact a{color:var(--text-dim);}
+  .hero-contact a:hover{color:var(--cyan);}
+
+  /* signature: routing path */
+  .route{margin:0 0 8px;}
+  .route svg{width:100%; height:auto; display:block;}
+  .route-label{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--text-dim); opacity:.7; margin-top:6px;}
+
+  @media (prefers-reduced-motion: no-preference){
+    .route-path{
+      stroke-dasharray: 6 8;
+      animation: dash 30s linear infinite;
+    }
+    .route-pulse{ animation: pulse 2.4s ease-in-out infinite; }
+    .route-pulse:nth-child(2){ animation-delay:.6s; }
+    .route-pulse:nth-child(3){ animation-delay:1.2s; }
+    .route-pulse:nth-child(4){ animation-delay:1.8s; }
+  }
+  @keyframes dash{ to{ stroke-dashoffset:-280; } }
+  @keyframes pulse{ 0%,100%{ opacity:.55; r:5; } 50%{ opacity:1; r:7; } }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0; border-top:1px solid var(--line);}
+  .sec-head{display:flex; align-items:baseline; gap:14px; margin-bottom:28px;}
+  .sec-tag{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber); white-space:nowrap;}
+  h2{
+    font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:26px; margin:0;
+    color:var(--text);
+  }
+
+  /* summary */
+  .summary p{max-width:640px; color:#C9D6E5; font-size:16px;}
+
+  /* skills */
+  .skill-grid{display:flex; flex-wrap:wrap; gap:10px;}
+  .skill-pill{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px;
+    background:var(--surface); border:1px solid var(--line); color:var(--text-dim);
+    padding:7px 13px; border-radius:100px;
+  }
+  .skill-pill.core{color:var(--cyan); border-color:rgba(79,209,197,0.35);}
+
+  .tech-list{margin-top:26px; display:grid; gap:8px;}
+  .tech-list div{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--text-dim);
+    padding:10px 14px; background:var(--surface); border-left:2px solid var(--amber-dim); border-radius:4px;
+  }
+
+  /* experience / timeline */
+  .tl-item{position:relative; padding-left:26px; margin-bottom:30px; border-left:1px solid var(--line);}
+  .tl-item:last-child{margin-bottom:0;}
+  .tl-item::before{
+    content:''; position:absolute; left:-4.5px; top:6px; width:8px; height:8px; border-radius:50%;
+    background:var(--cyan); box-shadow:0 0 0 4px rgba(79,209,197,0.12);
+  }
+  .tl-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber);}
+  .tl-role{font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:600; margin:4px 0 2px;}
+  .tl-org{color:var(--cyan); font-size:14px; margin-bottom:8px;}
+  .tl-item ul{margin:8px 0 0; padding-left:18px; color:#C9D6E5; font-size:14.5px;}
+  .tl-item li{margin-bottom:4px;}
+
+  /* projects */
+  .proj-grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px; display:flex; flex-direction:column; gap:10px;
+  }
+  .card-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber);}
+  .card h3{font-family:'Space Grotesk', sans-serif; font-size:16.5px; margin:0; line-height:1.3;}
+  .card-tools{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--text-dim);}
+  .card ul{margin:0; padding-left:16px; font-size:13.5px; color:#C9D6E5;}
+  .card li{margin-bottom:4px;}
+
+  /* certifications */
+  .cert-item{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 20px; margin-bottom:14px;
+  }
+  .cert-item:last-child{margin-bottom:0;}
+  .cert-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:6px 16px; align-items:baseline;}
+  .cert-name{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:15.5px;}
+  .cert-org{color:var(--text-dim); font-size:13px;}
+  .cert-date{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--amber); white-space:nowrap;}
+  .cert-item ul{margin:8px 0 0; padding-left:18px; font-size:13.5px; color:#C9D6E5;}
+  .cert-item li{margin-bottom:3px;}
+
+  /* education */
+  .edu-item{margin-bottom:18px;}
+  .edu-item:last-child{margin-bottom:0;}
+  .edu-degree{font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:16px;}
+  .edu-school{color:var(--cyan); font-size:13.5px;}
+  .edu-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-dim);}
+
+  /* two column */
+  .two-col{display:grid; grid-template-columns:1.4fr 1fr; gap:40px;}
+  @media (max-width:720px){ .two-col{grid-template-columns:1fr;} }
+
+  .misc-list{list-style:none; margin:0; padding:0; display:grid; gap:10px;}
+  .misc-list li{font-size:13.5px; color:#C9D6E5; padding-left:16px; position:relative;}
+  .misc-list li::before{content:'›'; position:absolute; left:0; color:var(--amber);}
+
+  .hobbies{display:flex; flex-wrap:wrap; gap:8px;}
+  .hobbies span{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-dim);
+    border:1px solid var(--line); border-radius:100px; padding:6px 12px;
+  }
+
+  footer{padding:40px 0 60px; text-align:center;}
+  footer p{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--text-dim);}
+  footer a{color:var(--cyan);}
+
+  @media (max-width:600px){
+    .nav-links{display:none;}
+    header.hero{padding:52px 0 32px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-id">MD MAHMUDUR <span>HASAN</span></div>
+    <div class="nav-links">
+      <a href="#experience">experience</a>
+      <a href="#projects">projects</a>
+      <a href="#certifications">certifications</a>
+      <a href="#education">education</a>
+      <a href="#contact">contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow">Computer Science · Dhaka, Bangladesh</p>
+    <h1 class="name">Md Mahmudur<br>Hasan</h1>
+    <p class="tagline">Computer science student at Independent University Bangladesh, routing between programming, networking and cybersecurity — building small systems that sense, connect and respond.</p>
+
+    <div class="route" aria-hidden="true">
+      <svg viewBox="0 0 800 90" preserveAspectRatio="xMidYMid meet">
+        <line x1="40" y1="45" x2="760" y2="45" stroke="#2A3F5C" stroke-width="1.5"/>
+        <line class="route-path" x1="40" y1="45" x2="760" y2="45" stroke="#4FD1C5" stroke-width="1.5" opacity="0.6"/>
+        <g font-family="IBM Plex Mono, monospace" font-size="11" fill="#8FA3BE">
+          <circle class="route-pulse" cx="40" cy="45" r="5" fill="#4FD1C5"/>
+          <text x="40" y="72" text-anchor="middle">PROGRAMMING</text>
+
+          <circle class="route-pulse" cx="280" cy="45" r="5" fill="#4FD1C5"/>
+          <text x="280" y="72" text-anchor="middle">NETWORKING</text>
+
+          <circle class="route-pulse" cx="520" cy="45" r="5" fill="#4FD1C5"/>
+          <text x="520" y="72" text-anchor="middle">SECURITY</text>
+
+          <circle class="route-pulse" cx="760" cy="45" r="5" fill="#4FD1C5"/>
+          <text x="760" y="72" text-anchor="middle">IoT SYSTEMS</text>
+        </g>
+      </svg>
+    </div>
+    <p class="route-label">// four nodes this CV routes through</p>
+
+    <div class="hero-contact">
+      <span>Dhaka, 1216, Bangladesh</span>
+      <a href="tel:01731990124">01731990124</a>
+      <a href="mailto:brebejoy901@gmail.com">brebejoy901@gmail.com</a>
+      <a href="https://www.linkedin.com/in/md-mahmudur-hasan-00b7322a0" target="_blank" rel="noopener">linkedin.com/in/md-mahmudur-hasan</a>
+    </div>
+  </header>
+
+  <section class="summary" id="summary">
+    <div class="sec-head"><span class="sec-tag">00</span><h2>Summary</h2></div>
+    <p>Computer science student at Independent University Bangladesh (IUB) with expertise in Python, Java, and cybersecurity principles. Actively engaged in tech festivals and competitions, demonstrating strong teamwork and problem-solving skills. Prepared to leverage academic training in practical software development environments.</p>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><span class="sec-tag">01</span><h2>Skills</h2></div>
+    <div class="skill-grid">
+      <span class="skill-pill core">Python</span>
+      <span class="skill-pill core">Java</span>
+      <span class="skill-pill core">C</span>
+      <span class="skill-pill">Programming languages</span>
+      <span class="skill-pill">Google Workspace</span>
+      <span class="skill-pill">Problem solving</span>
+      <span class="skill-pill">Research skills</span>
+      <span class="skill-pill">Team leadership</span>
+      <span class="skill-pill">Decision making</span>
+      <span class="skill-pill">Teamwork</span>
+      <span class="skill-pill">Multitasking</span>
+      <span class="skill-pill">Communication</span>
+      <span class="skill-pill">Active listening</span>
+      <span class="skill-pill">Leadership</span>
+    </div>
+    <div class="tech-list">
+      <div>TCP/IP · IPv4/IPv6 · Ethernet · VLANs · Routing &amp; Switching</div>
+      <div>Cisco Packet Tracer · CLI configuration · Network troubleshooting</div>
+      <div>Odoo (introductory) · ERP implementation concepts</div>
+      <div>Wireless security configuration · Network security best practices</div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><span class="sec-tag">02</span><h2>Experience</h2></div>
+
+    <div class="tl-item">
+      <div class="tl-date">January 2022 — Current</div>
+      <div class="tl-role">Participant</div>
+      <div class="tl-org">IUB ACM Student Chapter</div>
+      <ul>
+        <li>Participated in programming workshops and competitive coding sessions to enhance coding skills.</li>
+        <li>Collaborated with team members to meet project deadlines and deliver quality results.</li>
+        <li>Resolved complaints through effective communication and problem-solving strategies.</li>
+        <li>Maintained clean, safe working environments to eliminate accident risks.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">January 2022 — Current</div>
+      <div class="tl-role">Volunteer</div>
+      <div class="tl-org">SETS FEST</div>
+      <ul>
+        <li>Coordinated annual engineering and technology showcase, enhancing community engagement and showcasing student innovation.</li>
+      </ul>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-date">January 2023</div>
+      <div class="tl-role">Volunteer</div>
+      <div class="tl-org">TECH FEST</div>
+      <ul>
+        <li>Coordinated logistics and event planning for a university-wide technology festival, ensuring seamless execution and participant engagement.</li>
+        <li>Responded to guest questions about current facility events and future offerings.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><span class="sec-tag">03</span><h2>Projects</h2></div>
+    <div class="proj-grid">
+
+      <div class="card">
+        <span class="card-num">01</span>
+        <h3>Web Platform for Demand and Supply Management</h3>
+        <div class="card-tools">MySQL · PHP · HTML · CSS · JavaScript</div>
+        <ul>
+          <li>Built a website to manage product demand and supply between buyers and sellers.</li>
+          <li>Created a database to store product, order, and user information.</li>
+          <li>Added search and filter features so users can find products easily.</li>
+          <li>Designed separate dashboards for suppliers and customers to track orders.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-num">02</span>
+        <h3>PorireshBondhu — Real-Time Air Quality Monitoring System</h3>
+        <div class="card-tools">Arduino · DHT11 Sensor · MQ Sensor · ESP32 · ThingSpeak</div>
+        <ul>
+          <li>Built a device that checks temperature, humidity, and air quality in real time.</li>
+          <li>Connected sensors to a microcontroller to collect environmental data.</li>
+          <li>Sent data to a cloud platform and displayed it as live graphs.</li>
+          <li>Set up automatic alerts when pollution levels go above safe limits.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-num">03</span>
+        <h3>IoT-Based Watermelon Rot Prevention System</h3>
+        <div class="card-tools">8051 Microprocessor · Embedded C · Gas Sensor · Temperature Sensor · IoT Module</div>
+        <ul>
+          <li>Built a system to detect early signs of watermelon rot using gas and temperature sensors.</li>
+          <li>Programmed the microprocessor to monitor sensor values and respond quickly.</li>
+          <li>Activated a cooling fan automatically when values crossed safe limits.</li>
+          <li>Added an IoT module to send alerts to farmers on their phones.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-num">04</span>
+        <h3>LLM-Based Task Breakdown Tool Trained on Jira Data</h3>
+        <div class="card-tools">Python · LLM · Jira API · NLP</div>
+        <ul>
+          <li>Built a tool that takes a software use case and breaks it into smaller tasks automatically.</li>
+          <li>Used real Jira project data to train and test the language model.</li>
+          <li>Applied prompt engineering to improve the quality of task generation.</li>
+          <li>Tested output by comparing it with actual Jira tickets from real projects.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-num">05</span>
+        <h3>SoftBuddy-Mini — A Small Social Robot for Storytelling</h3>
+        <div class="card-tools">Arduino · Raspberry Pi · Servo Motor · Python · Text-to-Speech</div>
+        <ul>
+          <li>Built a small, soft robot designed to tell stories to children in a safe and friendly way.</li>
+          <li>Programmed the robot to move and show expressions while speaking stories aloud.</li>
+          <li>Added touch and proximity sensors so the robot reacts when a child comes near.</li>
+          <li>Organised the robot's software into separate parts for movement, speech, and sensing.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="sec-head"><span class="sec-tag">04</span><h2>Certifications &amp; Training</h2></div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">CCNA: Introduction to Networks</span>
+        <span class="cert-date">Issued May 03, 2026</span>
+      </div>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <ul>
+        <li>Configured switches and end devices for local and remote network resource access.</li>
+        <li>Explained physical and data link layer protocols for Ethernet in switched networks.</li>
+        <li>Configured routers for end-to-end connectivity between remote devices.</li>
+        <li>Created IPv4 and IPv6 addressing schemes and verified network connectivity.</li>
+        <li>Explained upper OSI model layers supporting network applications.</li>
+        <li>Configured small networks with security best practices and troubleshoot connectivity.</li>
+      </ul>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">Networking Basics</span>
+        <span class="cert-date">Issued April 25, 2026</span>
+      </div>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <ul>
+        <li>Explained key concepts in network communication, network types, components, and connections.</li>
+        <li>Described standards and protocols used in network communications.</li>
+        <li>Explained Ethernet network communication and IP/IPv4 addressing.</li>
+        <li>Described IPv6 addressing features and how routers connect networks.</li>
+        <li>Used tools to test and troubleshoot network connectivity.</li>
+        <li>Configured integrated wireless routers and wireless clients for secure internet access.</li>
+      </ul>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">Agent X Competition</span>
+        <span class="cert-date">September 2025</span>
+      </div>
+      <div class="cert-org">NetCom Learning</div>
+      <ul>
+        <li>Competed in a technology challenge focused on problem-solving and applied computing skills.</li>
+      </ul>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">Introduction to Cybersecurity</span>
+        <span class="cert-date">July 2025</span>
+      </div>
+      <div class="cert-org">Cisco Networking Academy</div>
+      <ul>
+        <li>Completed foundational cybersecurity training covering threat identification, network defense, and best practices.</li>
+      </ul>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">Basics of Python</span>
+        <span class="cert-date">January 2025</span>
+      </div>
+      <div class="cert-org">Uniathena</div>
+      <ul>
+        <li>Demonstrated understanding of Python syntax, data structures, and scripting fundamentals.</li>
+      </ul>
+    </div>
+
+    <div class="cert-item">
+      <div class="cert-top">
+        <span class="cert-name">ERP Skills &amp; Global Career Opportunities Seminar</span>
+        <span class="cert-date">Training &amp; Seminar</span>
+      </div>
+      <div class="cert-org">In collaboration with Dot BD Solutions Limited · conducted by certified Odoo trainers</div>
+      <ul>
+        <li>Gained knowledge in ERP implementation and software integration.</li>
+        <li>Developed job-ready skills targeting high-profile roles at top companies.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="two-col">
+      <div>
+        <div class="sec-head"><span class="sec-tag">05</span><h2>Education</h2></div>
+
+        <div class="edu-item">
+          <div class="edu-date">05/2026</div>
+          <div class="edu-degree">Bachelor of Science, Computer Science (CSC)</div>
+          <div class="edu-school">Independent University, Bangladesh (IUB), Dhaka</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-date">01/2020</div>
+          <div class="edu-degree">Higher Secondary Certificate</div>
+          <div class="edu-school">Govt. Shah Sultan College, Bogura</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-date">01/2018</div>
+          <div class="edu-degree">Secondary School Certificate</div>
+          <div class="edu-school">Armed Police Battalion Public School &amp; College, Bogura</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-head"><span class="sec-tag">06</span><h2>More</h2></div>
+        <ul class="misc-list">
+          <li>Languages: Bengali, English</li>
+          <li>Volunteer, TECH FEST, Dept. of CSE, IUB (2023) — event logistics and coordination.</li>
+          <li>Participant, ACM WEEK, IUB ACM Student Chapter (2022) — programming workshops and coding sessions.</li>
+          <li>Volunteer, SETS FEST, School of Engineering, Technology &amp; Sciences, IUB (2022) — organising the annual showcase.</li>
+        </ul>
+        <div style="height:22px;"></div>
+        <div class="sec-head" style="margin-bottom:14px;"><span class="sec-tag">07</span><h2 style="font-size:20px;">Hobbies</h2></div>
+        <div class="hobbies">
+          <span>Programming</span>
+          <span>Traveling</span>
+          <span>Photography</span>
+          <span>Reading</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><span class="sec-tag">08</span><h2>Contact</h2></div>
+    <p style="max-width:520px; color:#C9D6E5;">Open to internships and entry-level roles across networking, cybersecurity, and software development.</p>
+    <div class="hero-contact" style="margin-bottom:0;">
+      <a href="mailto:brebejoy901@gmail.com">brebejoy901@gmail.com</a>
+      <a href="tel:01731990124">01731990124</a>
+      <a href="https://www.linkedin.com/in/md-mahmudur-hasan-00b7322a0" target="_blank" rel="noopener">LinkedIn</a>
+      <span>Dhaka, 1216, Bangladesh</span>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>MD Mahmudur Hasan · Built as a CV</p>
+</footer>
+
+</body>
+</html>
